@@ -1,4 +1,4 @@
-export const gradients = [
+const gradients = [
   {
     name: "Grade Grey",
     start: "rgb(189, 195, 199)",
@@ -170,5 +170,4 @@ function allTags(list) {
 }
 
 export const uniqueTags = allTags(gradients);
-
-export default gradients; // rajouté par nous
+export default gradients;
