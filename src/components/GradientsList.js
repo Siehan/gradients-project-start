@@ -1,29 +1,78 @@
-import Gradient from "./Gradient"
-const GradientsList = () => {
+import Gradient from "./Gradient";
+
+const GradientsList = (props) => {
+  const { gradients, filter, setFilter } = props;
+
+  const filteredList = gradients.filter((elem) => {
+    if (filter === "Tous") {
+      return true;
+    } else {
+      return elem.tags.includes(filter);
+    }
+  });
+
   return (
     <ul className="row list-unstyled">
-      <Gradient
-        colorStart="rgb(189, 195, 199)"
-        colorEnd="rgb(44, 62, 80)"
-        name="Grade Grey"
-      />
-      <Gradient
-        colorStart="rgb(31, 64, 55)"
-        colorEnd="rgb(153, 242, 200)"
-        name="Harvey"
-      />
-      <Gradient
-        colorStart="rgb(0, 242, 96)"
-        colorEnd="rgb(5, 117, 230)"
-        name="Rainbow Blue"
-      />
-      <Gradient
-        colorStart="rgb(168, 192, 255)"
-        colorEnd="rgb(63, 43, 150)"
-        name="Slight Ocean View"
-      />
+      {filteredList.map((elem) => {
+        return (
+          <li key={elem.name} className="col-lg-3 col-md-4 col-sm-6">
+            <Gradient
+              setFilter={setFilter}
+              filter={filter}
+              colorStart={elem.start}
+              colorEnd={elem.end}
+              name={elem.name}
+              tags={elem.tags}
+            />
+          </li>
+        );
+      })}
     </ul>
-  )
-}
+  );
+};
 
-export default GradientsList
+export default GradientsList;
+
+/*
+import Gradient from "./Gradient";
+
+const GradientsList = (props) => {
+  const { gradients, filter, setFilter } = props;
+
+  return (
+    <ul className="row list-unstyled">
+      {gradients.map((elem) => {
+        if (filter === "Tous") {
+          return (
+            <li key={elem.name} className="col-lg-3 col-md-4 col-sm-6">
+              <Gradient
+                setFilter={setFilter}
+                filter={filter}
+                colorStart={elem.start}
+                colorEnd={elem.end}
+                name={elem.name}
+                tags={elem.tags}
+              />
+            </li>
+          );
+        } else if (elem.tags.includes(filter)) {
+          return (
+            <li key={elem.name} className="col-lg-3 col-md-4 col-sm-6">
+              <Gradient
+                setFilter={setFilter}
+                filter={filter}
+                colorStart={elem.start}
+                colorEnd={elem.end}
+                name={elem.name}
+                tags={elem.tags}
+              />
+            </li>
+          );
+        }
+      })}
+    </ul>
+  );
+};
+
+export default GradientsList;
+*/

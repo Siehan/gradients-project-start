@@ -1,14 +1,16 @@
-import GradientsList from "./components/GradientsList"
+import GradientsHeader from "./components/GradientsHeader";
+import Footer from "./components/Footer";
+import GradientsApp from "./components/GradientsApp";
+import gradients from "./gradients";
 
 function App() {
   return (
-    <div>
-      <h1 className="text-center my-4">Alyra Gradients</h1>
-      <main className="container">
-        <GradientsList />
-      </main>
+    <div className="min-vh-100 d-flex flex-column">
+      <GradientsHeader gradients={gradients} />
+      <GradientsApp gradients={gradients} />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
