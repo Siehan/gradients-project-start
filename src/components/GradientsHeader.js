@@ -21,7 +21,7 @@ const GradientsHeader = (props) => {
   return (
     <header style={style} className="text-center bg-dark text-white py-5 mb-5">
       <h1 className="display-1 text-center my-4">Alyra Gradients</h1>
-      <p>Ultime collection de plus beaux dégradés</p>
+      <p className="fs-5 text">Ultime collection de plus beaux dégradés</p>
       <button
         onClick={handlePreviousClick}
         aria-label="Clicker pour afficher le dégradé précédant"
